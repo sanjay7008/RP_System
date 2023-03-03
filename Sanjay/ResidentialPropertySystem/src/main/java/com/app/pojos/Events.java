@@ -1,6 +1,6 @@
 package com.app.pojos;
 
-import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -19,7 +19,6 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class Events extends BaseEntity {
 
 	private String title;
@@ -30,4 +29,11 @@ public class Events extends BaseEntity {
 	@Column(length=100)
 	private String description;
 
+	@Override
+	public String toString() {
+		return "Events [title=" + title + ", dateTime=" + dateTime + ", description=" + description + ", getId()="
+				+ getId() + "]";
+	}
+
+	
 }
