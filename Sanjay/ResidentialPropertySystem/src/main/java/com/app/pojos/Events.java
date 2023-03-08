@@ -5,20 +5,16 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 @Entity
 @Table(name="events")
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
+@Data
 public class Events extends BaseEntity {
 
 	private String title;
@@ -29,11 +25,13 @@ public class Events extends BaseEntity {
 	@Column(length=100)
 	private String description;
 
-	@Override
-	public String toString() {
-		return "Events [title=" + title + ", dateTime=" + dateTime + ", description=" + description + ", getId()="
-				+ getId() + "]";
-	}
+	@ManyToOne
+	@JoinColumn(name = "admin_join")
+	private Admin admin;
+	
+	
+	
+	
 
 	
 }

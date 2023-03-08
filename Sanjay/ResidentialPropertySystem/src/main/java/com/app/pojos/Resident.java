@@ -6,9 +6,11 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -49,13 +51,11 @@ public class Resident extends BaseEntity {
  
 	@OneToMany(mappedBy = "resident", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Flat> flatlist=new ArrayList<>();
+	
+	@OneToOne(mappedBy = "resident", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	private Admin admin;
 
-	@Override
-	public String toString() {
-		return "Resident [name=" + name + ", email=" + email + ", contactNumber=" + contactNumber + ", password="
-				+ password + ", serviceProvider=" + serviceProvider + ", flatlist="  + ", getId()="
-				+ getId() + "]";
-	}
+	
 	
 	
 	

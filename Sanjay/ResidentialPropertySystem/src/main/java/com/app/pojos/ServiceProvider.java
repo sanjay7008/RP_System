@@ -43,6 +43,8 @@ public class ServiceProvider extends BaseEntity{
 	
 	@OneToMany(mappedBy = "serviceProvider",cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<Resident>residentslist=new ArrayList<Resident>();
+	
+	
 
 	@Override
 	public String toString() {
